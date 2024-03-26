@@ -22,7 +22,7 @@ const Register = () => {
     formState: { errors },
   } = useForm<RegisterFormData>();
   const mutation = useMutation(apiClient.register, {
-    onSuccess:async () => {
+    onSuccess: async () => {
       showToast({ message: "Registration Success", type: "SUCCESS" });
       await queryClient.invalidateQueries("validateToken");
       navigate("/");
@@ -36,23 +36,23 @@ const Register = () => {
   });
   return (
     <form className="flex flex-col gap-5" onSubmit={onSubmit}>
-      <h2 className="text-3xl font-bold">Create a acount</h2>
+      <h2 className="text-3xl font-bold">Hesap Oluştur</h2>
       <div className="flex flex-col md:flex-row gap-5">
         <label className="text-gray-700 text-sm font-bold flex-1">
-          First Name
+          İsim
           <input
             className="border rounded w-full py-1 p-x2 font-normal "
-            {...register("firstName", { required: "This field required" })}
+            {...register("firstName", { required: "Bu alan boş kalamaz" })}
           />
           {errors.firstName && (
             <span className="text-red-500">{errors.firstName.message}</span>
           )}
         </label>
         <label className="text-gray-700 text-sm font-bold flex-1">
-          Last Name
+          Soyisim
           <input
             className="border rounded w-full py-1 p-x2 font-normal "
-            {...register("lastName", { required: "This field required" })}
+            {...register("lastName", { required: "Bu alan boş kalamaz" })}
           />
           {errors.lastName && (
             <span className="text-red-500">{errors.lastName.message}</span>
@@ -64,19 +64,19 @@ const Register = () => {
         <input
           type="email"
           className="border rounded w-full py-1 p-x2 font-normal "
-          {...register("email", { required: "This field required" })}
+          {...register("email", { required: "Bu alan boş kalamaz" })}
         />
         {errors.email && (
           <span className="text-red-500">{errors.email.message}</span>
         )}
       </label>
       <label className="text-gray-700 text-sm font-bold flex-1">
-        Password
+        Şifre
         <input
           type="password"
           className="border rounded w-full py-1 p-x2 font-normal "
           {...register("password", {
-            required: "This field required",
+            required: "Bu alan boş kalamaz",
             minLength: {
               value: 6,
               message: "Password must be at least 6 characters or more",
@@ -88,16 +88,16 @@ const Register = () => {
         )}
       </label>
       <label className="text-gray-700 text-sm font-bold flex-1">
-        Confirm Password
+        Şifreni Tekrarla
         <input
           type="password"
           className="border rounded w-full py-1 p-x2 font-normal "
           {...register("confirmPassword", {
             validate: (val) => {
               if (!val) {
-                return "This field required";
+                return "Bu alan boş kalamaz";
               } else if (watch("password") !== val) {
-                return "Your passwords doesn't match ";
+                return "Şifreler uyuşmuyor ";
               }
             },
           })}
@@ -111,7 +111,7 @@ const Register = () => {
           type="submit"
           className="bg-blue-600 text-white p-2 font-bold hover:bg-blue-500 text-xl"
         >
-          Create Acount
+          Kayıt Ol
         </button>
       </span>
     </form>

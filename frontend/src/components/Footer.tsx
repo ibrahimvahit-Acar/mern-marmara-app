@@ -6,8 +6,8 @@ const Footer = () => {
           TheMarmara.com
         </span>
         <span className="text-white font-bold tracking-tight flex gap-4 ">
-          <p className="cursor-pointer">Privacy Policy</p>
-          <p className="cursor-pointer">Terms of Service</p>
+          <p className="cursor-pointer">Gizlilik Politikası</p>
+          <p className="cursor-pointer">Kullanım Şartları</p>
         </span>
       </div>
     </div>
